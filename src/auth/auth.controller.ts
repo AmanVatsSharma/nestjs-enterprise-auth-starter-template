@@ -1,7 +1,6 @@
+//auth/auth.controller.ts
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -19,4 +18,8 @@ export class AuthController {
     return await this.authService.login(user)
   }
 
+  @Post('refresh')
+  async refresh(@Body()body: {token: string, ip?: string}){
+    return await this.authService.refresh(body.token, body.ip)
+  }
 }

@@ -19,7 +19,7 @@ export class User {
     isActive: boolean;
 
     @Column()
-    role: userRole
+    roles: userRole
 }
 
 export enum userRole {
